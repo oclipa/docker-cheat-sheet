@@ -27,6 +27,10 @@
 | `$ docker container prune`| Delete all stopped containers |
 | `$ docker rm $(docker ps -a -q -f status=exited)`| [legacy syntax] Delete all stopped containers |
 | <img width="400"/> | <img width="400"/> |
+| `$ docker build -t [username/appname] [directory containing docker file]`| Create an image based on the DockerFile |
+| `$ docker login [server name]`| Login to [Docker Hub](https://hub.docker.com/) (or, optionally, another server) |
+| `$ docker push [username/appname]`| Push the new image to the repository |
+| <img width="400"/> | <img width="400"/> |
 
 ## DockerFile Commands
 
@@ -34,7 +38,26 @@
 | :------- | :------- |
 | `FROM [base-name:version]` | The base image on which this image is based (e.g. `FROM python:3`). |
 | `WORKDIR [path]` | The directory in which the app is based. |
-| `COPY . .` | Copy all the files to the image' |
+| `COPY . .` | Copy all the files to the image |
 | `RUN [command]` | Run a command to build the environment (e.g. `RUN pip install --no-cache-dir -r requirements.txt`) | 
 | `EXPOSE [port]` | The port that needs to be exposed. |
-| `CMD ["executable", "arg1", "arg2", etc.]` | The command to run the application (e.g. `CMD ["python", "./app.py"]` |
+| `CMD ["executable", "arg1", "arg2", etc.]` | The command to run the application (e.g. `CMD ["python", "./app.py"]`) |
+
+## Example AWS Electric Beanstalk Config
+
+[Documentation](https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/single-container-docker-configuration.html#create_deploy_docker_image_dockerrun)
+
+'{
+  "AWSEBDockerrunVersion": "1",
+  "Image": {
+    "Name": "[image-name; e.g. oclipa/catnip]",
+    "Update": "true"
+  },
+  "Ports": [
+    {
+      "ContainerPort": 5000,
+      "HostPort": 8000
+    }
+  ],
+  "Logging": "/var/log/nginx"
+}'
