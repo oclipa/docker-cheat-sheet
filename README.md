@@ -1,6 +1,7 @@
 # A Docker Cheat-Sheet
 
 ## Terminology
+
 | Term | Description |
 | :------- | :------- |
 | Images | The blueprints of the application.  Very roughly approximates to a git registry.<br/>Containers are created from images. Images can be base images (i.e. not based on another image; typically just an OS), or child images (i.e. based on a base image; typically adds functionality to base) |
