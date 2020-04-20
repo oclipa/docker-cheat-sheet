@@ -8,6 +8,7 @@
 | Docker Daemon | Local background service that mnages building, running and distributing of containers.  |
 | Docker Client | The command line tool used to interact with the daemon (GUIs also exist). |
 | Docker Hub | A registry of images.  A central registry [exists](https://hub.docker.com/search?q=&type=image), however they can also be hosted locally. |
+| <img width="400"/> | <img width="400"/> |
 
 ## Commands
 
