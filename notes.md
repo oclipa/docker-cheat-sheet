@@ -80,11 +80,11 @@ Largely derived from [docker-curriculum.com](https://docker-curriculum.com/).
 
 [Documentation](https://stackabuse.com/deploying-a-node-js-app-to-a-digitalocean-droplet-with-docker/)
 
-1 Create SSH keypair: `$ ssh-keygen -t rsa -b 4096`
-1 Copy the public key to Digital Ocean account (Security -> Add SSH Key)
-1 Obtain a Droplet configured for Docker (may need to search in the Marketplace)
-1 Choose plan, region, SSH key and create Droplet
-1 Identify the IP address of the Droplet
-1 SSH to the Droplet: `$ ssh -i [path/to/private/key] root@ip-address]`
-1 Run the Docker image: `$ docker run -p [external-port]:[internal-port] [container-name]`
-1 Access the web page at: `http://[ip-address]:[external-port]/
+1. Create SSH keypair: `$ ssh-keygen -t rsa -b 4096`
+1. Copy the public key to Digital Ocean account (Security -> Add SSH Key)
+1. Obtain a Droplet configured for Docker (may need to search in the Marketplace)
+1. Choose plan, region, SSH key and create Droplet
+1. Identify the IP address of the Droplet
+1. SSH to the Droplet: `$ ssh -i [path/to/private/key] root@ip-address]`
+1. Run the Docker image: `$ docker run -p [external-port]:[internal-port] [container-name]`
+1. Access the web page at: `http://[ip-address]:[external-port]/`
