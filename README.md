@@ -1,189 +1,94 @@
----
-title: Docker CLI
-category: Devops
-layout: 2017/sheet
----
+# A Docker Cheat-Sheet
 
-Manage images
--------------
+## Terminology
+| Term | Description |
+| :------- | :------- |
+| Images | The blueprints of the application.  Very roughly approximates to a git registry.<br/>Containers are created from images. Images can be base images (i.e. not based on another image; typically just an OS), or child images (i.e. based on a base image; typically adds functionality to base) |
+| Containers | A running instance of an application. |
+| Docker File | A text file containing a list of commands for creating an image. |
+| Docker Daemon | Local background service that mnages building, running and distributing of containers.  |
+| Docker Client | The command line tool used to interact with the daemon (GUIs also exist). |
+| Docker Hub | A registry of images.  A central registry [exists](https://hub.docker.com/search?q=&type=image), however they can also be hosted locally. |
+| Flask | A micro web framework, written in Python.  Typically used for web applications. |
+| <img width="350"/> | <img width="400"/> |
 
-### `docker build`
+## CLI Commands
 
-```yml
-docker build [options] .
-  -t "app/container_name"    # name
-  --build-arg APP_HOME=$APP_HOME    # Set build-time variables
+| Command | Action |
+| :------- | :------- |
+| `$ docker images`| List all local images |
+| `$ docker pull [image name][:version]`| Pull an image from the Docker Hub (either latest or specified '[:version]'.<br/>To use a local registry, specify the full server name and path: `myregistry.local:5000/testing/test-image` |
+| `$ docker run [-d] [-P] [--name container-name] [image-name] [command\|-it] [--rm]` | Launches a container from the specified image and runs a command or opens an `sh` shell (`-d`= run container in background; `-P` = publish any internal ports to random external ports; `--rm` = delete container on exit) |
+| `$ docker run -p [external port:internal port; e.g. 8888:80] [image name]` | `-p` Specify a custom port to which the client will forward connections to the container. |
+| `$ docker port [container-id]` | Display ports exposed by container |
+| `$ docker stop [container-id]`| Stop a container |
+| `$ docker ps [-a]`| List all running containers (`-a` = include recently stopped containers) |
+| `$ docker rm [container-id]`| Delete a container |
+| `$ docker container prune`| Delete all stopped containers |
+| `$ docker rm $(docker ps -a -q -f status=exited)`| [legacy syntax] Delete all stopped containers |
+| <img width="400"/> | <img width="400"/> |
+| `$ docker build -t [username/appname] [directory containing docker file]`| Create an image based on the DockerFile |
+| `$ docker login [server name]`| Login to [Docker Hub](https://hub.docker.com/) (or, optionally, another server) |
+| `$ docker push [username/appname]`| Push the new image to the repository |
+| <img width="400"/> | <img width="400"/> |
+
+## DockerFile Commands
+
+| Command | Action |
+| :------- | :------- |
+| `FROM [base-name:version]` | The base image on which this image is based (e.g. `FROM python:3`). |
+| `WORKDIR [path]` | The directory in which the app is based. |
+| `COPY . .` | Copy all the files to the image |
+| `RUN [command]` | Run a command to build the environment (e.g. `RUN pip install --no-cache-dir -r requirements.txt`) | 
+| `EXPOSE [port]` | The port that needs to be exposed. |
+| `CMD ["executable", "arg1", "arg2", etc.]` | The command to run the application (e.g. `CMD ["python", "./app.py"]`) |
+
+## Deploying to AWS Electric Beanstalk
+
+[Documentation](https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/single-container-docker-configuration.html#create_deploy_docker_image_dockerru)
+
+*Example Dockerrun.aws.json*
+
+```json
+{
+  "AWSEBDockerrunVersion": "1",
+  "Image": {
+    "Name": "[image-name; e.g. oclipa/catnip]",
+    "Update": "true"
+  },
+  "Ports": [
+    {
+      "ContainerPort": 5000,
+      "HostPort": 8000
+    }
+  ],
+  "Logging": "/var/log/nginx"
+}
 ```
 
-Create an `image` from a Dockerfile.
+## Deploying to Google Compute Engine
 
+[Documentation](https://cloud.google.com/compute/docs/containers/deploying-containers)
 
-### `docker run`
+## Deploying to Azure App Service
 
-```yml
-docker run [options] IMAGE
-  # see `docker create` for options
-```
+[Documentation](https://docs.microsoft.com/en-us/learn/modules/deploy-run-container-app-service/)
 
-#### Example
+## Deploying to Digital Ocean
 
-```
-$ docker run -it debian:buster /bin/bash
-```
-Run a command in an `image`.
+[Documentation](https://stackabuse.com/deploying-a-node-js-app-to-a-digitalocean-droplet-with-docker/)
 
-Manage containers
------------------
+1. Create SSH keypair: `$ ssh-keygen -t rsa -b 4096`
+1. Copy the public key to Digital Ocean account (Security -> Add SSH Key)
+1. Obtain a Droplet configured for Docker (may need to search in the Marketplace)
+1. Choose plan, region, SSH key and create Droplet
+1. Identify the IP address of the Droplet
+1. SSH to the Droplet: `$ ssh -i [path/to/private/key] root@ip-address]`
+1. Run the Docker image: `$ docker run -p [external-port]:[internal-port] [container-name]`
+1. Access the web page at: `http://[ip-address]:[external-port]/`
 
-### `docker create`
+## Additional References
 
-```yml
-docker create [options] IMAGE
-  -a, --attach               # attach stdout/err
-  -i, --interactive          # attach stdin (interactive)
-  -t, --tty                  # pseudo-tty
-      --name NAME            # name your image
-  -p, --publish 5000:5000    # port map
-      --expose 5432          # expose a port to linked containers
-  -P, --publish-all          # publish all ports
-      --link container:alias # linking
-  -v, --volume `pwd`:/app    # mount (absolute paths needed)
-  -e, --env NAME=hello       # env vars
-```
-
-#### Example
-
-```
-$ docker create --name app_redis_1 \
-  --expose 6379 \
-  redis:3.0.2
-```
-
-Create a `container` from an `image`.
-
-### `docker exec`
-
-```yml
-docker exec [options] CONTAINER COMMAND
-  -d, --detach        # run in background
-  -i, --interactive   # stdin
-  -t, --tty           # interactive
-```
-
-#### Example
-
-```
-$ docker exec app_web_1 tail logs/development.log
-$ docker exec -t -i app_web_1 rails c
-```
-
-Run commands in a `container`.
-
-
-### `docker start`
-
-```yml
-docker start [options] CONTAINER
-  -a, --attach        # attach stdout/err
-  -i, --interactive   # attach stdin
-
-docker stop [options] CONTAINER
-```
-
-Start/stop a `container`.
-
-
-### `docker ps`
-
-```
-$ docker ps
-$ docker ps -a
-$ docker kill $ID
-```
-
-Manage `container`s using ps/kill.
-
-
-### `docker logs`
-
-```
-$ docker logs $ID
-$ docker logs $ID 2>&1 | less
-$ docker logs -f $ID # Follow log output
-```
-
-See what's being logged in an `container`.
-
-
-Images
-------
-
-### `docker images`
-
-```sh
-$ docker images
-  REPOSITORY   TAG        ID
-  ubuntu       12.10      b750fe78269d
-  me/myapp     latest     7b2431a8d968
-```
-
-```sh
-$ docker images -a   # also show intermediate
-```
-
-Manages `image`s.
-
-### `docker rmi`
-
-```yml
-docker rmi b750fe78269d
-```
-
-Deletes `image`s.
-
-## Clean up
-
-### Clean all
-
-```sh
-docker system prune
-```
-
-Cleans up dangling images, containers, volumes, and networks (ie, not associated with a container)
-
-```sh
-docker system prune -a
-```
-
-Additionally remove any stopped containers and all unused images (not just dangling images)
-
-### Containers
-
-```sh
-# Stop all running containers
-docker stop $(docker ps -a -q)
-
-# Delete stopped containers
-docker container prune
-```
-
-### Images
-
-```sh
-docker image prune [-a]
-```
-
-Delete all the images
-
-### Volumes
-
-```sh
-docker volume prune
-```
-
-Delete all the volumes
-
-Also see
---------
-
- * [Getting Started](http://www.docker.io/gettingstarted/) _(docker.io)_
+* [Offical Docker Reference Documentation](https://docs.docker.com/reference/)
+* [Get Started with Docker](https://www.docker.com/get-started)
+* [Docker for Beginners](https://docker-curriculum.com/)
