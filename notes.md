@@ -47,7 +47,8 @@
 
 [Documentation](https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/single-container-docker-configuration.html#create_deploy_docker_image_dockerrun)
 
-'{
+```json
+{
   "AWSEBDockerrunVersion": "1",
   "Image": {
     "Name": "[image-name; e.g. oclipa/catnip]",
@@ -60,4 +61,5 @@
     }
   ],
   "Logging": "/var/log/nginx"
-}'
+}
+```
