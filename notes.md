@@ -1,7 +1,5 @@
 # A Docker Cheat-Sheet
 
-Largely derived from [docker-curriculum.com](https://docker-curriculum.com/).
-
 ## Terminology
 | Term | Description |
 | :------- | :------- |
@@ -88,3 +86,9 @@ Largely derived from [docker-curriculum.com](https://docker-curriculum.com/).
 1. SSH to the Droplet: `$ ssh -i [path/to/private/key] root@ip-address]`
 1. Run the Docker image: `$ docker run -p [external-port]:[internal-port] [container-name]`
 1. Access the web page at: `http://[ip-address]:[external-port]/`
+
+## Additional References
+
+* [Offical Docker Reference Documentation](https://docs.docker.com/reference/)
+* [Get Started with Docker](https://www.docker.com/get-started)
+* [Docker for Beginners](https://docker-curriculum.com/)
