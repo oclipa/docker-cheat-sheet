@@ -39,6 +39,7 @@
 | `$ docker network ls`| List all networks (by default, Docker creates: "bridge", "host" and "none"; "bridge" is the network in which containers run by default). |
 | `$ docker network inspect [network-name]`| Inspect the state of a network. |
 | `$ docker network create [network-name]`| Create a new network. |
+| `$ docker network rm [network-name]`| Remove a network. |
 | <img width="400"/> | <img width="400"/> |
 
 ### Legacy Commands (may be deprecated in the future)
@@ -60,16 +61,27 @@
 | `$ docker rm $(docker ps -a -q -f status=exited)`| Delete all stopped containers |
 | <img width="400"/> | <img width="400"/> |
 
-## DockerFile Commands
+## DockerFile
 
 | Command | Action |
 | :------- | :------- |
 | `FROM [base-name:version]` | The base image on which this image is based (e.g. `FROM python:3`). |
 | `WORKDIR [path]` | The directory in which the app is based. |
+| `ADD file.xyz /file.xyz` | Copy all the files to the image |
 | `COPY . .` | Copy all the files to the image |
+| `COPY --chown=user:group host_file.xyz /path/container_file.xyz`| Copy a specific file to the image, with specific access permissions |
+| `VOLUME ["/data"]` | Specification for mount point | 
+| `ENV APP_HOME /myapp` or `ARG APP_HOME="/myapp"` | Set environment variables |
 | `RUN [command]` | Run a command to build the environment (e.g. `RUN pip install --no-cache-dir -r requirements.txt`) | 
+| `RUN bundle install` | ? |
+| `ONBUILD RUN bundle install` | ? |
 | `EXPOSE [port]` | The port that needs to be exposed. |
+| `ENTRYPOINT ["executable", "param1", "param2"]` | Configure a container that will run as an executable.  Any `CMD` or `docker run` command will be ignored.  |
 | `CMD ["executable", "arg1", "arg2", etc.]` | The command to run the application (e.g. `CMD ["python", "./app.py"]`) |
+| `LABEL version="1.0"`| Set the version |
+| `LABEL "com.example.vendor"="ACME Incorporated"` | Set the vendor |
+| `LABEL com.example.label-with-value="foo"` | Generic meta-data |
+| `LABEL description="This text illustrates \<br/>that label-values can span multiple lines."` | Set the description. |
 
 ## Commonly Used Images
 
@@ -96,6 +108,50 @@ docker container run -d --name es --net foodtrucks-net -p 9200:9200 -p 9300:9300
 docker container run -d --net foodtrucks-net -p 5000:5000 --name foodtrucks-web oclipa/foodtrucks-web
 ```
 Relates to the following git repo: https://github.com/oclipa/food-trucks
+
+## Docker-Compose
+
+A tool for managing a collection of containers as if they were a single app.  
+
+It is configured using a YAML file: `docker-compose.yml`, of which the following is an example:
+
+```yaml
+version: "3"
+services:
+  es:
+    image: docker.elastic.co/elasticsearch/elasticsearch:6.3.2
+    container_name: es
+    environment:
+      - discovery.type=single-node
+    ports:
+      - 9200:9200
+    volumes:
+      - esdata1:/usr/share/elasticsearch/data
+  web:
+    image: oclipa/foodtrucks-web
+    command: python app.py
+    depends_on:
+      - es
+    ports:
+      - 5000:5000
+    volumes:
+      - ./flask-app:/opt/flask-app
+volumes:
+  esdata1:
+    driver: local
+```
+
+This file defines two services `es` (the elasticsearch service) and `web` (the web app).  The details are broadly the same as those in the DockerFile, however note that `depends-on` property, which indicates that the es service must be started before the web service.  The `volumes` properties are particularly useful for logging.
+
+`docker-compose` commands must be run in the same directory as the `docker-compose.yml` file.
+
+| Command | Action |
+| :------- | :------- |
+| _Image Commands_ | <img width="400"/> |
+| `$ docker-compose up [-d]` | Launch all of the services and connect them to the same network. `-d` Detached mode. |
+| `$ docker-compose ps` | List all services. |
+| `$ docker-compose down [-v]` | Shutdown all of the services. `-v` Destroy all data volumes. |
+
 
 ## Deploying to AWS Electric Beanstalk
 
@@ -144,6 +200,7 @@ Relates to the following git repo: https://github.com/oclipa/food-trucks
 ## Additional References
 
 * [Offical Docker Reference Documentation](https://docs.docker.com/reference/)
+* [Official Compose File Documentation](https://docs.docker.com/compose/compose-file/)
 * [Get Started with Docker](https://www.docker.com/get-started)
 * [Docker for Beginners](https://docker-curriculum.com/)
 * [Docker Networks](https://docs.docker.com/network/)
