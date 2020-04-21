@@ -95,7 +95,7 @@ docker container run -d --name es --net foodtrucks-net -p 9200:9200 -p 9300:9300
 # start the flask app container
 docker container run -d --net foodtrucks-net -p 5000:5000 --name foodtrucks-web oclipa/foodtrucks-web
 ```
-Relates to the following docker image: https://hub.docker.com/repository/docker/oclipa/foodtrucks-web
+Relates to the following git repo: https://github.com/oclipa/food-trucks
 
 ## Deploying to AWS Electric Beanstalk
 
