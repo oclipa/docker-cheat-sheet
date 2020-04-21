@@ -17,21 +17,43 @@
 
 | Command | Action |
 | :------- | :------- |
+| `$ docker login [server name]`| Login to [Docker Hub](https://hub.docker.com/) (or, optionally, another server) |
+| `$ docker search [search-term]`| Search the Docker Hub for images |
+| <img width="400"/> | <img width="400"/> |
+| `$ docker image ls`| List all local images |
+| `$ docker image pull [image name][:version]`| Pull an image from the Docker Hub (either latest or specified '[:version]'.<br/>To use a local registry, specify the full server name and path: `myregistry.local:5000/testing/test-image` |
+| `$ docker image build -t [username/appname] [directory containing docker file]`| Create a new image based on the DockerFile |
+| `$ docker image push [username/appname]`| Push an image to the repository |
+| <img width="400"/> | <img width="400"/> |
+| `$ docker container run [-d] [-P] [--name container-name] [image-name] [command\|-it] [--rm]` | Launches a container from the specified image and runs a command or opens an `sh` shell (`-d`= run container in background; `-P` = publish any internal ports to random external ports; `--rm` = delete container on exit) |
+| `$ docker container run -p [external port:internal port; e.g. 8888:80] [image name] -e "[key=value]"` | `-p` Specify a custom port to which the client will forward connections to the container; `-e` Set an environment variable |
+| `$ docker container logs [container-name]` | Display logs for the specified container |
+| `$ docker container port [container-name]` | Display ports exposed by container |
+| `$ docker container stop [container-name]`| Stop a container |
+| `$ docker container ls [-a]`| List all running containers (`-a` = include recently stopped containers) |
+| `$ docker container rm [container-name]`| Delete a container |
+| `$ docker container prune`| Delete all stopped containers |
+| <img width="400"/> | <img width="400"/> |
+
+### Legacy Commands
+
+| Command | Action |
+| :------- | :------- |
 | `$ docker images`| List all local images |
 | `$ docker pull [image name][:version]`| Pull an image from the Docker Hub (either latest or specified '[:version]'.<br/>To use a local registry, specify the full server name and path: `myregistry.local:5000/testing/test-image` |
-| `$ docker run [-d] [-P] [--name container-name] [image-name] [command\|-it] [--rm]` | Launches a container from the specified image and runs a command or opens an `sh` shell (`-d`= run container in background; `-P` = publish any internal ports to random external ports; `--rm` = delete container on exit) |
-| `$ docker run -p [external port:internal port; e.g. 8888:80] [image name]` | `-p` Specify a custom port to which the client will forward connections to the container. |
-| `$ docker port [container-id]` | Display ports exposed by container |
-| `$ docker stop [container-id]`| Stop a container |
-| `$ docker ps [-a]`| List all running containers (`-a` = include recently stopped containers) |
-| `$ docker rm [container-id]`| Delete a container |
-| `$ docker container prune`| Delete all stopped containers |
-| `$ docker rm $(docker ps -a -q -f status=exited)`| [legacy syntax] Delete all stopped containers |
-| <img width="400"/> | <img width="400"/> |
 | `$ docker build -t [username/appname] [directory containing docker file]`| Create an image based on the DockerFile |
-| `$ docker login [server name]`| Login to [Docker Hub](https://hub.docker.com/) (or, optionally, another server) |
 | `$ docker push [username/appname]`| Push the new image to the repository |
 | <img width="400"/> | <img width="400"/> |
+| `$ docker run [-d] [-P] [--name container-name] [image-name] [command\|-it] [--rm]` | Launches a container from the specified image and runs a command or opens an `sh` shell (`-d`= run container in background; `-P` = publish any internal ports to random external ports; `--rm` = delete container on exit) |
+| `$ docker run -p [external port:internal port; e.g. 8888:80] [image name] -e "[key=value]"` | `-p` Specify a custom port to which the client will forward connections to the container; `-e` Set an environment variable |
+| `$ docker logs [container-name]` | Display logs for the specified container |
+| `$ docker port [container-name]` | Display ports exposed by container |
+| `$ docker stop [container-name]`| Stop a container |
+| `$ docker ps [-a]`| List all running containers (`-a` = include recently stopped containers) |
+| `$ docker rm [container-name]`| Delete a container |
+| `$ docker rm $(docker ps -a -q -f status=exited)`| Delete all stopped containers |
+| <img width="400"/> | <img width="400"/> |
+
 
 ## DockerFile Commands
 
