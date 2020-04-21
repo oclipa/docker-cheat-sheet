@@ -72,16 +72,15 @@
 | `COPY --chown=user:group host_file.xyz /path/container_file.xyz`| Copy a specific file to the image, with specific access permissions |
 | `VOLUME ["/data"]` | Specification for mount point | 
 | `ENV APP_HOME /myapp` or `ARG APP_HOME="/myapp"` | Set environment variables |
-| `RUN [command]` | Run a command to build the environment (e.g. `RUN pip install --no-cache-dir -r requirements.txt`) | 
-| `RUN bundle install` | ? |
-| `ONBUILD RUN bundle install` | ? |
 | `EXPOSE [port]` | The port that needs to be exposed. |
-| `ENTRYPOINT ["executable", "param1", "param2"]` | Configure a container that will run as an executable.  Any `CMD` or `docker run` command will be ignored.  |
-| `CMD ["executable", "arg1", "arg2", etc.]` | The command to run the application (e.g. `CMD ["python", "./app.py"]`) |
-| `LABEL version="1.0"`| Set the version |
-| `LABEL "com.example.vendor"="ACME Incorporated"` | Set the vendor |
-| `LABEL com.example.label-with-value="foo"` | Generic meta-data |
+| `RUN ["executable", "arg1", "arg2", "etc."]` | Mainly used to install a new package on top of the base image (e.g. `RUN ["pip", "install", "--no-cache-dir", "-r", "requirements.txt"`) |
+| `CMD ["executable", "arg1", "arg2", "etc."]` | A default command to be run when `docker run` is called (e.g. `CMD ["python", "./app.py"]`).  If the "executable" is left out, the arguments are appended to the `ENTRYPOINT` command. `CMD` is ignored if a command is specified on the command line. |
+| `ENTRYPOINT ["executable", "arg1", "arg2", "etc."]` | This should be used if the container is to be used as an executable.  The command will always run, regardless of any command line arguments.  Any command line arguments will be appended to the `ENTRYPOINT` arguments. |
+| `ONBUILD [command]` | To be run if another image is built on top of this image. |
+| `LABEL <key>=<value> <key>=<value> <key>=<value> ...` | Set metadata as key-value pairs. |
 | `LABEL description="This text illustrates \<br/>that label-values can span multiple lines."` | Set the description. |
+
+For further discussion of the difference between `RUN`, `CMD` and `ENTRYPOINT, see [here](https://aboullaite.me/dockerfile-run-vs-cmd-vs-entrypoint/).
 
 ## Commonly Used Images
 
@@ -199,7 +198,8 @@ This file defines two services `es` (the elasticsearch service) and `web` (the w
 
 ## Additional References
 
-* [Offical Docker Reference Documentation](https://docs.docker.com/reference/)
+* [Official Docker Reference Documentation](https://docs.docker.com/reference/)
+* [Official DockerFile Documentation](https://docs.docker.com/engine/reference/builder/)
 * [Official Compose File Documentation](https://docs.docker.com/compose/compose-file/)
 * [Get Started with Docker](https://www.docker.com/get-started)
 * [Docker for Beginners](https://docker-curriculum.com/)
