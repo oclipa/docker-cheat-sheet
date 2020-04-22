@@ -10,7 +10,7 @@
 | Docker Compose | A text file containing a list of commands for creating an image. |
 | Docker Daemon | Local background service that mnages building, running and distributing of containers.  |
 | Docker Client | The command line tool used to interact with the daemon (GUIs also exist). |
-| Docker Hub | A registry of images.  A central registry [exists](https://hub.docker.com/search?q=&type=image), however they can also be hosted locally. |
+| Docker Hub | A central registry of images maintained by Docker: https://hub.docker.com/ <br/> Repositories can also be hosted locally. |
 | Flask | A micro web framework, written in Python.  Typically used for web applications. |
 | <img width="350"/> | <img width="400"/> |
 
@@ -23,7 +23,7 @@
 | Command | Action |
 | :------- | :------- |
 | _Repository Commands_ | <img width="400"/> |
-| `$ docker login [server name]`| Login to [Docker Hub](https://hub.docker.com/) (or, optionally, another server) |
+| `$ docker login [server name]`| Login to the Docker Hub (or, optionally, another server) |
 | `$ docker search [search-term]`| Search the Docker Hub for images |
 | _Image Commands_ | <img width="400"/> |
 | `$ docker image ls`| List all local images |
@@ -87,16 +87,7 @@
 | `LABEL <key>=<value> <key>=<value> <key>=<value> ...` | Set metadata as key-value pairs. |
 | `LABEL description="This text illustrates \<br/>that label-values can span multiple lines."` | Set the description. |
 
-For further discussion of the difference between `RUN`, `CMD` and `ENTRYPOINT, see [here](https://aboullaite.me/dockerfile-run-vs-cmd-vs-entrypoint/).
-
-<p style="page-break-before: always"/> 
-
-## Commonly Used Images
-
-* Ubuntu - simple but flexible base image (use apt-get to install dependencies) - [example](https://github.com/prakhar1989/FoodTrucks)
-* Python - base image with python pre-installed - [example](https://github.com/prakhar1989/docker-curriculum/tree/master/flask-app)
-* Busybox - lightweight command line tools
-* Elasticsearch - open source search and analytics engine
+For further discussion of the difference between `RUN`, `CMD` and `ENTRYPOINT, see https://aboullaite.me/dockerfile-run-vs-cmd-vs-entrypoint/
 
 ## Example Script to Launch Multi-Container Environment
 
@@ -116,6 +107,8 @@ docker container run -d --name es --net foodtrucks-net -p 9200:9200 -p 9300:9300
 docker container run -d --net foodtrucks-net -p 5000:5000 --name foodtrucks-web oclipa/foodtrucks-web
 ```
 Relates to the following git repo: https://github.com/oclipa/food-trucks
+
+<p style="page-break-before: always"/> 
 
 ## Docker-Compose
 
@@ -200,16 +193,17 @@ To develop and test an existing image, do the following:
 
 ## Deploying to Google Compute Engine
 
-[Documentation](https://cloud.google.com/compute/docs/containers/deploying-containers)
+* https://cloud.google.com/compute/docs/containers/deploying-containers
 
 ## Deploying to Azure App Service
 
-[Documentation](https://docs.microsoft.com/en-us/learn/modules/deploy-run-container-app-service/)
+* https://docs.microsoft.com/en-us/learn/modules/deploy-run-container-app-service/
 
 ## Deploying to Digital Ocean
 
-[Documentation](https://stackabuse.com/deploying-a-node-js-app-to-a-digitalocean-droplet-with-docker/)
+* https://stackabuse.com/deploying-a-node-js-app-to-a-digitalocean-droplet-with-docker/
 
+Summarised:
 1. Create SSH keypair: `$ ssh-keygen -t rsa -b 4096`
 1. Copy the public key to Digital Ocean account (Security -> Add SSH Key)
 1. Obtain a Droplet configured for Docker (may need to search in the Marketplace)
@@ -221,12 +215,21 @@ To develop and test an existing image, do the following:
 
 <p style="page-break-before: always"/> 
 
+## Commonly Used Images
+
+* Ubuntu - simple but flexible base image (use apt-get to install dependencies)
+   * Example: https://github.com/prakhar1989/FoodTrucks
+* Python - base image with python pre-installed
+   * Example: https://github.com/prakhar1989/docker-curriculum/tree/master/flask-app
+* Busybox - lightweight command line tools
+* Elasticsearch - open source search and analytics engine
+
 ## Additional References
 
-* [Official Docker Reference Documentation](https://docs.docker.com/reference/)
-* [Official DockerFile Documentation](https://docs.docker.com/engine/reference/builder/)
-* [Official Compose File Documentation](https://docs.docker.com/compose/compose-file/)
-* [Get Started with Docker](https://www.docker.com/get-started)
-* [Docker for Beginners](https://docker-curriculum.com/)
-* [Docker Networks](https://docs.docker.com/network/)
+* Official Docker Reference Documentation: https://docs.docker.com/reference/
+* Official DockerFile Documentation: https://docs.docker.com/engine/reference/builder/
+* Official Docker Compose Documentation: https://docs.docker.com/compose/compose-file/
+* Official Docker Networks Documentation: https://docs.docker.com/network/
+* Get Started with Docker: https://www.docker.com/get-started
+* Docker for Beginners: https://docker-curriculum.com/
 
