@@ -12,7 +12,7 @@
 | Docker Client | The command line tool used to interact with the daemon (GUIs also exist). |
 | Docker Hub | A central registry of images maintained by Docker: [https://hub.docker.com/](https://hub.docker.com/) <br/> Repositories can also be hosted locally. |
 | Flask | A micro web framework, written in Python.  Typically used for web applications. |
-| <img width="400"/> |  |
+| <img width="400"/> | <img width="400"/>  |
 
 <p style="page-break-before: always"/> 
 
@@ -30,7 +30,7 @@
 | `$ docker image pull [image name][:version]`| Pull an image from the Docker Hub<br/>(either latest or specified '[:version]'.<br/>To use a local registry, specify<br/>the full server name and path:<br/> `myregistry.local:5000/testing/test-image` |
 | `$ docker image build -t [username/appname] [directory containing docker file]`| Create a new image based on the DockerFile |
 | `$ docker image push [username/appname]`| Push an image to the repository |
-| _Container Commands_ |  |
+| _Container Commands_ | <img width="400"/>  |
 | `$ docker container run [-d] [-P\|-p [external port:internal port]] -e "[key=value]" --net [network-name] [--name container-name] [image-name] [command\|-it] [--rm]` | Launches a container from the specified image and<br/>runs a command or opens an `sh` shell<br/>`-d` run container in background<br/>`-P` Map internal ports to random external ports<br/>`-p` Specify custom internal/external port mapping<br/>`-e` Set an environment variable<br/>`--net` Specify the network to join<br/>`--rm` Delete container on exit |
 | `$ docker container logs [container-name]` | Display logs for the specified container |
 | `$ docker container port [container-name]` | Display ports exposed by container |
@@ -51,7 +51,7 @@
 
 | Command | Action |
 | :------- | :------- |
-| _Image Commands_ |  |
+| _Image Commands_ | <img width="400"/>  |
 | `$ docker images`| List all local images |
 | `$ docker pull [image name][:version]`| Pull an image from the Docker Hub<br/>(either latest or specified '[:version]'.<br/>To use a local registry, specify the full server name and<br/>path: `myregistry.local:5000/testing/test-image` |
 | `$ docker build -t [username/appname] [directory containing docker file]`| Create an image based on the DockerFile |
@@ -86,7 +86,7 @@
 | `ONBUILD [command]` | To be run if another image is built on top of this image. |
 | `LABEL <key>=<value> <key>=<value> <key>=<value> ...` | Set metadata as key-value pairs. |
 | `LABEL description="This text illustrates \<br/>that label-values can span multiple lines."` | Set the description. |
-| <img width="400"/> |  |
+| <img width="400"/> | <img width="400"/>  |
 
 For further discussion of the difference between `RUN`, `CMD` and `ENTRYPOINT, see 
    * [https://aboullaite.me/dockerfile-run-vs-cmd-vs-entrypoint/](https://aboullaite.me/dockerfile-run-vs-cmd-vs-entrypoint/)
@@ -158,7 +158,7 @@ If problems are experienced, might need to run `docker-compose up -d --build`.
 
 | Command | Action |
 | :------- | :------- |
-| _Image Commands_ |  |
+| _Image Commands_ | <img width="400"/>  |
 | `$ docker-compose up [-d] [--build]` | Launch all of the services and connect them to the same network.<br/>`-d` Detached mode.<br/>`--build` Rebuild the local image. |
 | `$ docker-compose ps` | List all services. |
 | `$ docker-compose down [-v]` | Shutdown all of the services. `-v` Destroy all data volumes. |
