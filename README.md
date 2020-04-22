@@ -1,5 +1,7 @@
 # A Docker Cheat-Sheet
+
 <img width="800"/>
+
 ## Terminology
 
 | Term | Description |
