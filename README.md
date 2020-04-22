@@ -1,5 +1,3 @@
-# A Docker Cheat-Sheet
-
 ## Terminology
 
 | Term | Description |
@@ -12,7 +10,7 @@
 | Docker Client | The command line tool used to interact with the daemon (GUIs also exist). |
 | Docker Hub | A central registry of images maintained by Docker: [https://hub.docker.com/](https://hub.docker.com/) <br/> Repositories can also be hosted locally. |
 | Flask | A micro web framework, written in Python.  Typically used for web applications. |
-| <img width="400"/> | <img width="400"/>  |
+| <img width="300"/> | <img width="400"/>  |
 
 <p style="page-break-before: always"/> 
 
@@ -43,7 +41,7 @@
 | `$ docker network inspect [network-name]`| Inspect the state of a network. |
 | `$ docker network create [network-name]`| Create a new network. |
 | `$ docker network rm [network-name]`| Remove a network. |
-| <img width="400"/> |  |
+| <img width="300"/> |  |
 
 <p style="page-break-before: always"/> 
 
@@ -64,7 +62,7 @@
 | `$ docker ps [-a]`| List all running containers (`-a` = include recently stopped containers) |
 | `$ docker rm [container-name]`| Delete a container |
 | `$ docker rm $(docker ps -a -q -f status=exited)`| Delete all stopped containers |
-| <img width="400"/> |  |
+| <img width="300"/> |  |
 
 <p style="page-break-before: always"/> 
 
@@ -85,8 +83,9 @@
 | `ENTRYPOINT ["executable", "arg1", "arg2", "etc."]` | This should be used if the container is to be used as an executable.  The command will always run, regardless of any command line arguments.  Any command line arguments will be appended to the `ENTRYPOINT` arguments. |
 | `ONBUILD [command]` | To be run if another image is built on top of this image. |
 | `LABEL <key>=<value> <key>=<value> <key>=<value> ...` | Set metadata as key-value pairs. |
-| `LABEL description="This text illustrates \<br/>that label-values can span multiple lines."` | Set the description. |
-| <img width="400"/> | <img width="400"/>  |
+| `LABEL description="This text illustrates \ 
+    that label-values can span multiple lines."` | Set the description. |
+| <img width="300"/> | <img width="400"/>  |
 
 For further discussion of the difference between `RUN`, `CMD` and `ENTRYPOINT, see 
    * [https://aboullaite.me/dockerfile-run-vs-cmd-vs-entrypoint/](https://aboullaite.me/dockerfile-run-vs-cmd-vs-entrypoint/)
@@ -163,7 +162,7 @@ If problems are experienced, might need to run `docker-compose up -d --build`.
 | `$ docker-compose ps` | List all services. |
 | `$ docker-compose down [-v]` | Shutdown all of the services. `-v` Destroy all data volumes. |
 | `$ docker-compose run [service-id] [command]` | Run a command in the context of the specified service. |
-| <img width="400"/> |  |
+| <img width="300"/> |  |
 
 <p style="page-break-before: always"/> 
 
