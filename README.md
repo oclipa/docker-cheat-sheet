@@ -1,5 +1,5 @@
 # A Docker Cheat-Sheet
-
+<img width="800"/>
 ## Terminology
 
 | Term | Description |
@@ -12,7 +12,6 @@
 | Docker Client | The command line tool used to interact with the daemon (GUIs also exist). |
 | Docker Hub | A central registry of images maintained by Docker: [https://hub.docker.com/](https://hub.docker.com/) <br/> Repositories can also be hosted locally. |
 | Flask | A micro web framework, written in Python.  Typically used for web applications. |
-| <img width="350"/> | <img width="400"/> |
 
 <p style="page-break-before: always"/> 
 
@@ -86,7 +85,7 @@
 | `LABEL description="This text illustrates \<br/>that label-values can span multiple lines."` | Set the description. |
 
 For further discussion of the difference between `RUN`, `CMD` and `ENTRYPOINT, see 
-   * https://aboullaite.me/dockerfile-run-vs-cmd-vs-entrypoint/
+   * [https://aboullaite.me/dockerfile-run-vs-cmd-vs-entrypoint/](https://aboullaite.me/dockerfile-run-vs-cmd-vs-entrypoint/)
 
 ## Example Script to Launch Multi-Container Environment
 
@@ -107,7 +106,7 @@ docker container run -d --name es --net foodtrucks-net -p 9200:9200 -p 9300:9300
 docker container run -d --net foodtrucks-net -p 5000:5000 \
    --name foodtrucks-web oclipa/foodtrucks-web
 ```
-Relates to the following git repo: https://github.com/oclipa/food-trucks
+Relates to the following git repo: [https://github.com/oclipa/food-trucks](https://github.com/oclipa/food-trucks)
 
 <p style="page-break-before: always"/> 
 
@@ -154,7 +153,7 @@ If problems are experienced, might need to run `docker-compose up -d --build`.
 
 | Command | Action |
 | :------- | :------- |
-| _Image Commands_ | <img width="400"/> |
+| _Image Commands_ |  |
 | `$ docker-compose up [-d] [--build]` | Launch all of the services and connect them to the same network.<br/>`-d` Detached mode.<br/>`--build` Rebuild the local image. |
 | `$ docker-compose ps` | List all services. |
 | `$ docker-compose down [-v]` | Shutdown all of the services. `-v` Destroy all data volumes. |
@@ -164,7 +163,7 @@ If problems are experienced, might need to run `docker-compose up -d --build`.
 
 ## Deploying to AWS Electric Beanstalk
 
-* https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/single-container-docker-configuration.html
+* [https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/single-container-docker-configuration.html](https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/single-container-docker-configuration.html)
 
 *Example Dockerrun.aws.json*
 
@@ -187,15 +186,15 @@ If problems are experienced, might need to run `docker-compose up -d --build`.
 
 ## Deploying to Google Compute Engine
 
-* https://cloud.google.com/compute/docs/containers/deploying-containers
+* [https://cloud.google.com/compute/docs/containers/deploying-containers](https://cloud.google.com/compute/docs/containers/deploying-containers)
 
 ## Deploying to Azure App Service
 
-* https://docs.microsoft.com/en-us/learn/modules/deploy-run-container-app-service/
+* [https://docs.microsoft.com/en-us/learn/modules/deploy-run-container-app-service/](https://docs.microsoft.com/en-us/learn/modules/deploy-run-container-app-service/)
 
 ## Deploying to Digital Ocean
 
-* https://stackabuse.com/deploying-a-node-js-app-to-a-digitalocean-droplet-with-docker/
+* [https://stackabuse.com/deploying-a-node-js-app-to-a-digitalocean-droplet-with-docker/](https://stackabuse.com/deploying-a-node-js-app-to-a-digitalocean-droplet-with-docker/)
 
 Summarised:
 1. Create SSH keypair: `$ ssh-keygen -t rsa -b 4096`
@@ -223,18 +222,18 @@ To develop and test an existing image, do the following:
 ## Commonly Used Images
 
 * Ubuntu - simple but flexible base image (use apt-get to install dependencies)
-   * Example: https://github.com/prakhar1989/FoodTrucks
+   * Example: [https://github.com/prakhar1989/FoodTrucks](https://github.com/prakhar1989/FoodTrucks)
 * Python - base image with python pre-installed
-   * Example: https://github.com/prakhar1989/docker-curriculum/tree/master/flask-app
+   * Example: [https://github.com/prakhar1989/docker-curriculum/tree/master/flask-app](https://github.com/prakhar1989/docker-curriculum/tree/master/flask-app)
 * Busybox - lightweight command line tools
 * Elasticsearch - open source search and analytics engine
 
 ## Additional References
 
-* Official Docker Reference Documentation: https://docs.docker.com/reference/
-* Official DockerFile Documentation: https://docs.docker.com/engine/reference/builder/
-* Official Docker Compose Documentation: https://docs.docker.com/compose/compose-file/
-* Official Docker Networks Documentation: https://docs.docker.com/network/
-* Get Started with Docker: https://www.docker.com/get-started
-* Docker for Beginners: https://docker-curriculum.com/
+* Official Docker Reference Documentation: [https://docs.docker.com/reference/](https://docs.docker.com/reference/)
+* Official DockerFile Documentation: [https://docs.docker.com/engine/reference/builder/](https://docs.docker.com/engine/reference/builder/)
+* Official Docker Compose Documentation: [https://docs.docker.com/compose/compose-file/](https://docs.docker.com/compose/compose-file/)
+* Official Docker Networks Documentation: [https://docs.docker.com/network/](https://docs.docker.com/network/)
+* Get Started with Docker: [https://www.docker.com/get-started](https://www.docker.com/get-started)
+* Docker for Beginners: [https://docker-curriculum.com/](https://docker-curriculum.com/)
 
