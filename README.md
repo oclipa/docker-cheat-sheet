@@ -10,7 +10,7 @@
 | Docker Compose | A text file containing a list of commands for creating an image. |
 | Docker Daemon | Local background service that mnages building, running and distributing of containers.  |
 | Docker Client | The command line tool used to interact with the daemon (GUIs also exist). |
-| Docker Hub | A central registry of images maintained by Docker: https://hub.docker.com/ <br/> Repositories can also be hosted locally. |
+| Docker Hub | A central registry of images maintained by Docker: [https://hub.docker.com/](https://hub.docker.com/) <br/> Repositories can also be hosted locally. |
 | Flask | A micro web framework, written in Python.  Typically used for web applications. |
 | <img width="350"/> | <img width="400"/> |
 
@@ -23,23 +23,23 @@
 | Command | Action |
 | :------- | :------- |
 | _Repository Commands_ | <img width="400"/> |
-| `$ docker login [server name]`| Login to the Docker Hub (or, optionally, another server) |
+| `$ docker login [server name]`| Login to the Docker Hub<br/>(or, optionally, another server) |
 | `$ docker search [search-term]`| Search the Docker Hub for images |
 | _Image Commands_ | <img width="400"/> |
 | `$ docker image ls`| List all local images |
-| `$ docker image pull [image name][:version]`| Pull an image from the Docker Hub (either latest or specified '[:version]'.<br/>To use a local registry, specify the full server name and path: `myregistry.local:5000/testing/test-image` |
+| `$ docker image pull [image name][:version]`| Pull an image from the Docker Hub<br/>(either latest or specified '[:version]'.<br/>To use a local registry, specify<br/>the full server name and path:<br/> `myregistry.local:5000/testing/test-image` |
 | `$ docker image build -t [username/appname] [directory containing docker file]`| Create a new image based on the DockerFile |
 | `$ docker image push [username/appname]`| Push an image to the repository |
 | _Container Commands_ | <img width="400"/> |
-| `$ docker container run [-d] [-P\|-p [external port:internal port]] -e "[key=value]" --net [network-name] [--name container-name] [image-name] [command\|-it] [--rm]` | Launches a container from the specified image and runs a command or opens an `sh` shell<br/>`-d` run container in background<br/>`-P` Map internal ports to random external ports<br/>`-p` Specify custom internal/external port mapping<br/>`-e` Set an environment variable<br/>`--net` Specify the network to join<br/>`--rm` Delete container on exit |
+| `$ docker container run [-d] [-P\|-p [external port:internal port]] -e "[key=value]" --net [network-name] [--name container-name] [image-name] [command\|-it] [--rm]` | Launches a container from the specified image and<br/>runs a command or opens an `sh` shell<br/>`-d` run container in background<br/>`-P` Map internal ports to random external ports<br/>`-p` Specify custom internal/external port mapping<br/>`-e` Set an environment variable<br/>`--net` Specify the network to join<br/>`--rm` Delete container on exit |
 | `$ docker container logs [container-name]` | Display logs for the specified container |
 | `$ docker container port [container-name]` | Display ports exposed by container |
 | `$ docker container stop [container-name]`| Stop a container |
-| `$ docker container ls [-a]`| List all running containers (`-a` = include recently stopped containers) |
+| `$ docker container ls [-a]`| List all running containers<br/>`-a` = include recently stopped containers |
 | `$ docker container rm [container-name]`| Delete a container |
 | `$ docker container prune`| Delete all stopped containers |
 | _Network Commands_ | <img width="400"/> |
-| `$ docker network ls`| List all networks (by default, Docker creates: "bridge", "host" and "none"; "bridge" is the network in which containers run by default). |
+| `$ docker network ls`| List all networks.<br/>By default, Docker creates: "bridge", "host" and "none",<br/>"bridge" is the default network for containers. |
 | `$ docker network inspect [network-name]`| Inspect the state of a network. |
 | `$ docker network create [network-name]`| Create a new network. |
 | `$ docker network rm [network-name]`| Remove a network. |
@@ -53,7 +53,7 @@
 | :------- | :------- |
 | _Image Commands_ | <img width="400"/> |
 | `$ docker images`| List all local images |
-| `$ docker pull [image name][:version]`| Pull an image from the Docker Hub (either latest or specified '[:version]'.<br/>To use a local registry, specify the full server name and path: `myregistry.local:5000/testing/test-image` |
+| `$ docker pull [image name][:version]`| Pull an image from the Docker Hub<br/>(either latest or specified '[:version]'.<br/>To use a local registry, specify the full server name and<br/>path: `myregistry.local:5000/testing/test-image` |
 | `$ docker build -t [username/appname] [directory containing docker file]`| Create an image based on the DockerFile |
 | `$ docker push [username/appname]`| Push the new image to the repository |
 | _Container Commands_ | <img width="400"/> |
@@ -87,7 +87,8 @@
 | `LABEL <key>=<value> <key>=<value> <key>=<value> ...` | Set metadata as key-value pairs. |
 | `LABEL description="This text illustrates \<br/>that label-values can span multiple lines."` | Set the description. |
 
-For further discussion of the difference between `RUN`, `CMD` and `ENTRYPOINT, see https://aboullaite.me/dockerfile-run-vs-cmd-vs-entrypoint/
+For further discussion of the difference between `RUN`, `CMD` and `ENTRYPOINT, see 
+   * https://aboullaite.me/dockerfile-run-vs-cmd-vs-entrypoint/
 
 ## Example Script to Launch Multi-Container Environment
 
@@ -101,10 +102,10 @@ docker image build -t oclipa/foodtrucks-web .
 docker network create foodtrucks-net
 
 # start the ES container
-docker container run -d --name es --net foodtrucks-net -p 9200:9200 -p 9300:9300 -e "discovery.type=single-node" docker.elastic.co/elasticsearch/elasticsearch:6.3.2
+docker container run -d --name es --net foodtrucks-net -p 9200:9200 -p 9300:9300 \\<br/>&nbsp;&nbsp; -e "discovery.type=single-node" docker.elastic.co/elasticsearch/elasticsearch:6.3.2
 
 # start the flask app container
-docker container run -d --net foodtrucks-net -p 5000:5000 --name foodtrucks-web oclipa/foodtrucks-web
+docker container run -d --net foodtrucks-net -p 5000:5000 \\<br/>&nbsp;&nbsp; --name foodtrucks-web oclipa/foodtrucks-web
 ```
 Relates to the following git repo: https://github.com/oclipa/food-trucks
 
@@ -129,7 +130,7 @@ services:
     volumes:
       - esdata1:/usr/share/elasticsearch/data
   web:
-    #build: . # builds a new image; might need to run docker-compose up -d --build if have problems
+    #build: . # builds a new image
     image: oclipa/foodtrucks-web # uses an existing image
     command: python app.py
     depends_on:
@@ -149,6 +150,8 @@ This file defines two services `es` (the elasticsearch service) and `web` (the w
 
 `docker-compose` commands must be run in the same directory as the `docker-compose.yml` file.
 
+If problems are experienced, might need to run `docker-compose up -d --build`.
+
 | Command | Action |
 | :------- | :------- |
 | _Image Commands_ | <img width="400"/> |
@@ -156,15 +159,6 @@ This file defines two services `es` (the elasticsearch service) and `web` (the w
 | `$ docker-compose ps` | List all services. |
 | `$ docker-compose down [-v]` | Shutdown all of the services. `-v` Destroy all data volumes. |
 | `$ docker-compose run [service-id] [command]` | Run a command in the context of the specified service. |
-
-## Development Workflow
-
-To develop and test an existing image, do the following:
-
-1. Make changes to local files for the service under development
-2. In `docker-compose.yml`, for the service of interest, replace the `image [image name]` property with a `build .` property.
-3. Restart the services: `docker-compose down -v; docker-compose up -d --build`
-4. If you have problems, try deleting the existing image (`docker image rm [image-name]`) and restart the services again.
 
 <p style="page-break-before: always"/> 
 
@@ -212,6 +206,17 @@ Summarised:
 1. SSH to the Droplet: `$ ssh -i [path/to/private/key] root@ip-address]`
 1. Run the Docker image: `$ docker run -p [external-port]:[internal-port] [container-name]`
 1. Access the web page at: `http://[ip-address]:[external-port]/`
+
+<p style="page-break-before: always"/> 
+
+## Development Workflow
+
+To develop and test an existing image, do the following:
+
+1. Make changes to local files for the service under development
+2. In `docker-compose.yml`, for the service of interest, replace the `image [image name]` property with a `build .` property.
+3. Restart the services: `docker-compose down -v; docker-compose up -d --build`
+4. If you have problems, try deleting the existing image (`docker image rm [image-name]`) and restart the services again.
 
 <p style="page-break-before: always"/> 
 
