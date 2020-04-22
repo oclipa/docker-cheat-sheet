@@ -70,7 +70,7 @@
 
 | Command | Action |
 | :------- | :------- |
-| `FROM [base-name:version]` | The base image on which this image is based (e.g. `FROM python:3`). |
+| `FROM [base-name:version]` | The base image on which this image is based <br/> e.g. `FROM python:3` |
 | `WORKDIR [path]` | The directory in which the app is based. |
 | `ADD file.xyz /file.xyz` | Copy all the files to the image |
 | `COPY . .` | Copy all the files to the image |
@@ -78,8 +78,8 @@
 | `VOLUME ["/data"]` | Specification for mount point | 
 | `ENV APP_HOME /myapp` or `ARG APP_HOME="/myapp"` | Set environment variables |
 | `EXPOSE [port]` | The port that needs to be exposed. |
-| `RUN ["executable", "arg1", "arg2", "etc."]` | Mainly used to install a new package on top of the base image (e.g. `RUN ["pip", "install", "--no-cache-dir", "-r", "requirements.txt"`) |
-| `CMD ["executable", "arg1", "arg2", "etc."]` | A default command to be run when `docker run` is called (e.g. `CMD ["python", "./app.py"]`).  If the "executable" is left out, the arguments are appended to the `ENTRYPOINT` command. `CMD` is ignored if a command is specified on the command line. |
+| `RUN ["executable", "arg1", "arg2", "etc."]` | Mainly used to install a new package on top of the base image <br/> e.g. `RUN ["pip", "install", "--no-cache-dir", "-r", "requirements.txt"` |
+| `CMD ["executable", "arg1", "arg2", "etc."]` | A default command to be run when `docker run` is called <br/> e.g. `CMD ["python", "./app.py"]`.  If the "executable" is left out, the arguments are appended to the `ENTRYPOINT` command. `CMD` is ignored if a command is specified on the command line. |
 | `ENTRYPOINT ["executable", "arg1", "arg2", "etc."]` | This should be used if the container is to be used as an executable.  The command will always run, regardless of any command line arguments.  Any command line arguments will be appended to the `ENTRYPOINT` arguments. |
 | `ONBUILD [command]` | To be run if another image is built on top of this image. |
 | `LABEL <key>=<value> <key>=<value> <key>=<value> ...` | Set metadata as key-value pairs. |
