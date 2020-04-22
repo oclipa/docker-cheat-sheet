@@ -83,8 +83,6 @@
 | `ENTRYPOINT ["executable", "arg1", "arg2", "etc."]` | This should be used if the container is to be used as an executable.  The command will always run, regardless of any command line arguments.  Any command line arguments will be appended to the `ENTRYPOINT` arguments. |
 | `ONBUILD [command]` | To be run if another image is built on top of this image. |
 | `LABEL <key>=<value> <key>=<value> <key>=<value> ...` | Set metadata as key-value pairs. |
-| `LABEL description="This text illustrates \ 
-    that label-values can span multiple lines."` | Set the description. |
 | <img width="300"/> | <img width="400"/>  |
 
 For further discussion of the difference between `RUN`, `CMD` and `ENTRYPOINT, see 
@@ -221,8 +219,6 @@ To develop and test an existing image, do the following:
 2. In `docker-compose.yml`, for the service of interest, replace the `image [image name]` property with a `build .` property.
 3. Restart the services: `docker-compose down -v; docker-compose up -d --build`
 4. If you have problems, try deleting the existing image (`docker image rm [image-name]`) and restart the services again.
-
-<p style="page-break-before: always"/> 
 
 ## Commonly Used Images
 
