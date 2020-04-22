@@ -14,7 +14,7 @@
 | Flask | A micro web framework, written in Python.  Typically used for web applications. |
 | <img width="350"/> | <img width="400"/> |
 
-<p style="page-break-before: always"> 
+<p style="page-break-before: always"/> 
 
 ## CLI Commands
 
@@ -45,7 +45,7 @@
 | `$ docker network rm [network-name]`| Remove a network. |
 | <img width="400"/> | <img width="400"/> |
 
-<p style="page-break-before: always"> 
+<p style="page-break-before: always"/> 
 
 ### Legacy Commands (may be deprecated in the future)
 
@@ -66,7 +66,7 @@
 | `$ docker rm $(docker ps -a -q -f status=exited)`| Delete all stopped containers |
 | <img width="400"/> | <img width="400"/> |
 
-<p style="page-break-before: always"> 
+<p style="page-break-before: always"/> 
 
 ## DockerFile
 
@@ -89,7 +89,7 @@
 
 For further discussion of the difference between `RUN`, `CMD` and `ENTRYPOINT, see [here](https://aboullaite.me/dockerfile-run-vs-cmd-vs-entrypoint/).
 
-<p style="page-break-before: always"> 
+<p style="page-break-before: always"/> 
 
 ## Commonly Used Images
 
@@ -173,7 +173,7 @@ To develop and test an existing image, do the following:
 3. Restart the services: `docker-compose down -v; docker-compose up -d --build`
 4. If you have problems, try deleting the existing image (`docker image rm [image-name]`) and restart the services again.
 
-<p style="page-break-before: always"> 
+<p style="page-break-before: always"/> 
 
 ## Deploying to AWS Electric Beanstalk
 
@@ -219,7 +219,7 @@ To develop and test an existing image, do the following:
 1. Run the Docker image: `$ docker run -p [external-port]:[internal-port] [container-name]`
 1. Access the web page at: `http://[ip-address]:[external-port]/`
 
-<p style="page-break-before: always"> 
+<p style="page-break-before: always"/> 
 
 ## Additional References
 
