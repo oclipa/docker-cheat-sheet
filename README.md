@@ -6,7 +6,8 @@
 | :------- | :------- |
 | Images | The blueprints of the application.  Very roughly approximates to a git registry.<br/>Containers are created from images. Images can be base images (i.e. not based on another image; typically just an OS), or child images (i.e. based on a base image; typically adds functionality to base) |
 | Containers | A running instance of an application. |
-| Docker File | A text file containing a list of commands for creating an image. |
+| DockerFile | A tool for simplifying the reployment of multi-container applications. |
+| Docker Compose | A text file containing a list of commands for creating an image. |
 | Docker Daemon | Local background service that mnages building, running and distributing of containers.  |
 | Docker Client | The command line tool used to interact with the daemon (GUIs also exist). |
 | Docker Hub | A registry of images.  A central registry [exists](https://hub.docker.com/search?q=&type=image), however they can also be hosted locally. |
@@ -127,10 +128,13 @@ services:
     volumes:
       - esdata1:/usr/share/elasticsearch/data
   web:
-    image: oclipa/foodtrucks-web
+    #build: . # builds a new image; might need to run docker-compose up -d --build if have problems
+    image: oclipa/foodtrucks-web # uses an existing image
     command: python app.py
     depends_on:
       - es
+    #environment:
+    #  - DEBUG=True # set an env var for flask
     ports:
       - 5000:5000
     volumes:
@@ -147,10 +151,19 @@ This file defines two services `es` (the elasticsearch service) and `web` (the w
 | Command | Action |
 | :------- | :------- |
 | _Image Commands_ | <img width="400"/> |
-| `$ docker-compose up [-d]` | Launch all of the services and connect them to the same network. `-d` Detached mode. |
+| `$ docker-compose up [-d] [--build]` | Launch all of the services and connect them to the same network.<br/>`-d` Detached mode.<br/>`--build` Rebuild the local image. |
 | `$ docker-compose ps` | List all services. |
 | `$ docker-compose down [-v]` | Shutdown all of the services. `-v` Destroy all data volumes. |
+| `$ docker-compose run [service-id] [command]` | Run a command in the context of the specified service. |
 
+## Development Workflow
+
+To develop and test an existing image, do the following:
+
+1. Make changes to local files for the service under development
+2. In `docker-compose.yml`, for the service of interest, replace the `image [image name]` property with a `build .` property.
+3. Restart the services: `docker-compose down -v; docker-compose up -d --build`
+4. If you have problems, try deleting the existing image (`docker image rm [image-name]`) and restart the services again.
 
 ## Deploying to AWS Electric Beanstalk
 
