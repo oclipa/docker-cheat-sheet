@@ -25,12 +25,12 @@
 | _Repository Commands_ | <img width="400"/> |
 | `$ docker login [server name]`| Login to the Docker Hub<br/>(or, optionally, another server) |
 | `$ docker search [search-term]`| Search the Docker Hub for images |
-| _Image Commands_ | <img width="400"/> |
+| _Image Commands_ |  |
 | `$ docker image ls`| List all local images |
 | `$ docker image pull [image name][:version]`| Pull an image from the Docker Hub<br/>(either latest or specified '[:version]'.<br/>To use a local registry, specify<br/>the full server name and path:<br/> `myregistry.local:5000/testing/test-image` |
 | `$ docker image build -t [username/appname] [directory containing docker file]`| Create a new image based on the DockerFile |
 | `$ docker image push [username/appname]`| Push an image to the repository |
-| _Container Commands_ | <img width="400"/> |
+| _Container Commands_ |  |
 | `$ docker container run [-d] [-P\|-p [external port:internal port]] -e "[key=value]" --net [network-name] [--name container-name] [image-name] [command\|-it] [--rm]` | Launches a container from the specified image and<br/>runs a command or opens an `sh` shell<br/>`-d` run container in background<br/>`-P` Map internal ports to random external ports<br/>`-p` Specify custom internal/external port mapping<br/>`-e` Set an environment variable<br/>`--net` Specify the network to join<br/>`--rm` Delete container on exit |
 | `$ docker container logs [container-name]` | Display logs for the specified container |
 | `$ docker container port [container-name]` | Display ports exposed by container |
@@ -38,12 +38,11 @@
 | `$ docker container ls [-a]`| List all running containers<br/>`-a` = include recently stopped containers |
 | `$ docker container rm [container-name]`| Delete a container |
 | `$ docker container prune`| Delete all stopped containers |
-| _Network Commands_ | <img width="400"/> |
+| _Network Commands_ |  |
 | `$ docker network ls`| List all networks.<br/>By default, Docker creates: "bridge", "host" and "none",<br/>"bridge" is the default network for containers. |
 | `$ docker network inspect [network-name]`| Inspect the state of a network. |
 | `$ docker network create [network-name]`| Create a new network. |
 | `$ docker network rm [network-name]`| Remove a network. |
-| <img width="400"/> | <img width="400"/> |
 
 <p style="page-break-before: always"/> 
 
@@ -51,12 +50,12 @@
 
 | Command | Action |
 | :------- | :------- |
-| _Image Commands_ | <img width="400"/> |
+| _Image Commands_ |  |
 | `$ docker images`| List all local images |
 | `$ docker pull [image name][:version]`| Pull an image from the Docker Hub<br/>(either latest or specified '[:version]'.<br/>To use a local registry, specify the full server name and<br/>path: `myregistry.local:5000/testing/test-image` |
 | `$ docker build -t [username/appname] [directory containing docker file]`| Create an image based on the DockerFile |
 | `$ docker push [username/appname]`| Push the new image to the repository |
-| _Container Commands_ | <img width="400"/> |
+| _Container Commands_ |  |
 | `$ docker run [-d] [-P\|-p [external port:internal port]] -e "[key=value]" --net [network-name] [--name container-name] [image-name] [command\|-it] [--rm]` | Launches a container from the specified image and runs a command or opens an `sh` shell<br/>`-d` run container in background<br/>`-P` Map internal ports to random external ports<br/>`-p` Specify custom internal/external port mapping<br/>`-e` Set an environment variable<br/>`--net` Specify the network to join<br/>`--rm` Delete container on exit |
 | `$ docker logs [container-name]` | Display logs for the specified container |
 | `$ docker port [container-name]` | Display ports exposed by container |
@@ -64,7 +63,6 @@
 | `$ docker ps [-a]`| List all running containers (`-a` = include recently stopped containers) |
 | `$ docker rm [container-name]`| Delete a container |
 | `$ docker rm $(docker ps -a -q -f status=exited)`| Delete all stopped containers |
-| <img width="400"/> | <img width="400"/> |
 
 <p style="page-break-before: always"/> 
 
@@ -102,10 +100,12 @@ docker image build -t oclipa/foodtrucks-web .
 docker network create foodtrucks-net
 
 # start the ES container
-docker container run -d --name es --net foodtrucks-net -p 9200:9200 -p 9300:9300 \\<br/>&nbsp;&nbsp; -e "discovery.type=single-node" docker.elastic.co/elasticsearch/elasticsearch:6.3.2
+docker container run -d --name es --net foodtrucks-net -p 9200:9200 -p 9300:9300 \
+   -e "discovery.type=single-node" docker.elastic.co/elasticsearch/elasticsearch:6.3.2
 
 # start the flask app container
-docker container run -d --net foodtrucks-net -p 5000:5000 \\<br/>&nbsp;&nbsp; --name foodtrucks-web oclipa/foodtrucks-web
+docker container run -d --net foodtrucks-net -p 5000:5000 \
+   --name foodtrucks-web oclipa/foodtrucks-web
 ```
 Relates to the following git repo: https://github.com/oclipa/food-trucks
 
@@ -164,7 +164,7 @@ If problems are experienced, might need to run `docker-compose up -d --build`.
 
 ## Deploying to AWS Electric Beanstalk
 
-[Documentation](https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/single-container-docker-configuration.html#create_deploy_docker_image_dockerru)
+* https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/single-container-docker-configuration.html
 
 *Example Dockerrun.aws.json*
 
