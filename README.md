@@ -20,6 +20,7 @@
 | Docker Hub | A central registry of images maintained by Docker: [https://hub.docker.com/](https://hub.docker.com/) <br/> Repositories can also be hosted locally. |
 | Flask | A micro web framework, written in Python.  Typically used for web applications. |
 | <img width="300"/> | <img width="400"/>  |
+
 </div>
 </div>
 
@@ -75,6 +76,7 @@
 | `$ docker rm [container-name]`| Delete a container |
 | `$ docker rm $(docker ps -a -q -f status=exited)`| Delete all stopped containers |
 | <img width="300"/> |  |
+
 </div>
 </div>
 
@@ -102,6 +104,7 @@
 
 For further discussion of the difference between `RUN`, `CMD` and `ENTRYPOINT, see 
    * [https://aboullaite.me/dockerfile-run-vs-cmd-vs-entrypoint/](https://aboullaite.me/dockerfile-run-vs-cmd-vs-entrypoint/)
+
 </div>
 </div>
 
@@ -128,6 +131,7 @@ docker container run -d --net foodtrucks-net -p 5000:5000 \
    --name foodtrucks-web oclipa/foodtrucks-web
 ```
 Relates to the following git repo: [https://github.com/oclipa/food-trucks](https://github.com/oclipa/food-trucks)
+
 </div>
 </div>
 <p style="page-break-before: always"/> 
@@ -182,6 +186,7 @@ If problems are experienced, might need to run `docker-compose up -d --build`.
 | `$ docker-compose down [-v]` | Shutdown all of the services. `-v` Destroy all data volumes. |
 | `$ docker-compose run [service-id] [command]` | Run a command in the context of the specified service. |
 | <img width="300"/> |  |
+
 </div>
 </div>
 <p style="page-break-before: always"/> 
@@ -217,6 +222,7 @@ If problems are experienced, might need to run `docker-compose up -d --build`.
 <div class="content" style="display: none;" markdown="1">
 
 * [https://cloud.google.com/compute/docs/containers/deploying-containers](https://cloud.google.com/compute/docs/containers/deploying-containers)
+
 </div>
 </div>
 
@@ -225,6 +231,7 @@ If problems are experienced, might need to run `docker-compose up -d --build`.
 <div class="content" style="display: none;" markdown="1">
 
 * [https://docs.microsoft.com/en-us/learn/modules/deploy-run-container-app-service/](https://docs.microsoft.com/en-us/learn/modules/deploy-run-container-app-service/)
+
 </div>
 </div>
 
@@ -243,6 +250,7 @@ Summarised:
 1. SSH to the Droplet: `$ ssh -i [path/to/private/key] root@ip-address]`
 1. Run the Docker image: `$ docker run -p [external-port]:[internal-port] [container-name]`
 1. Access the web page at: `http://[ip-address]:[external-port]/`
+
 </div>
 </div>
 <p style="page-break-before: always"/> 
@@ -256,6 +264,7 @@ To develop and test an existing image, do the following:
 2. In `docker-compose.yml`, for the service of interest, replace the `image [image name]` property with a `build .` property.
 3. Restart the services: `docker-compose down -v; docker-compose up -d --build`
 4. If you have problems, try deleting the existing image (`docker image rm [image-name]`) and restart the services again.
+
 </div>
 </div>
 
@@ -269,6 +278,7 @@ To develop and test an existing image, do the following:
    * Example: [https://github.com/prakhar1989/docker-curriculum/tree/master/flask-app](https://github.com/prakhar1989/docker-curriculum/tree/master/flask-app)
 * Busybox - lightweight command line tools
 * Elasticsearch - open source search and analytics engine
+
 </div>
 </div>
 
@@ -282,6 +292,7 @@ To develop and test an existing image, do the following:
 * Official Docker Networks Documentation: [https://docs.docker.com/network/](https://docs.docker.com/network/)
 * Get Started with Docker: [https://www.docker.com/get-started](https://www.docker.com/get-started)
 * Docker for Beginners: [https://docker-curriculum.com/](https://docker-curriculum.com/)
+
 </div>
 </div>
 
