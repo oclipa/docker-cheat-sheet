@@ -3,11 +3,7 @@
 <a class="link" href="http://oclipa.github.io/toolbox.html">&lt; toolbox</a>
 </div> 
 
-## Docker
-
-<div>   
-<button type="button" class="collapsible">+ Terminology</button>
-<div class="content" style="display: none;" markdown="1">
+## Terminology
 
 | Term | Description |
 | :------- | :------- |
@@ -21,13 +17,9 @@
 | Flask | A micro web framework, written in Python.  Typically used for web applications. |
 | <img width="300"/> | <img width="400"/>  |
 
-</div>
-</div>
-
 <p style="page-break-before: always"/> 
-<div>   
-<button type="button" class="collapsible">+ CLI Commands</button>
-<div class="content" style="display: none;" markdown="1">
+
+## CLI Commands
 
 ### Management Commands (since v1.13+)
 
@@ -77,13 +69,9 @@
 | `$ docker rm $(docker ps -a -q -f status=exited)`| Delete all stopped containers |
 | <img width="300"/> |  |
 
-</div>
-</div>
-
 <p style="page-break-before: always"/> 
-<div>   
-<button type="button" class="collapsible">+ DockerFile</button>
-<div class="content" style="display: none;" markdown="1">
+
+## DockerFile
 
 | Command | Action |
 | :------- | :------- |
@@ -104,9 +92,6 @@
 
 For further discussion of the difference between `RUN`, `CMD` and `ENTRYPOINT, see 
    * [https://aboullaite.me/dockerfile-run-vs-cmd-vs-entrypoint/](https://aboullaite.me/dockerfile-run-vs-cmd-vs-entrypoint/)
-
-</div>
-</div>
 
 <div>   
 <button type="button" class="collapsible">+ Example Script to Launch Multi-Container Environment</button>
@@ -135,9 +120,8 @@ Relates to the following git repo: [https://github.com/oclipa/food-trucks](https
 </div>
 </div>
 <p style="page-break-before: always"/> 
-<div>   
-<button type="button" class="collapsible">+ Docker-Compose</button>
-<div class="content" style="display: none;" markdown="1">
+
+## Docker-Compose
 
 A tool for managing a collection of containers as if they were a single app.  
 
@@ -187,8 +171,6 @@ If problems are experienced, might need to run `docker-compose up -d --build`.
 | `$ docker-compose run [service-id] [command]` | Run a command in the context of the specified service. |
 | <img width="300"/> |  |
 
-</div>
-</div>
 <p style="page-break-before: always"/> 
 <div>   
 <button type="button" class="collapsible">+ Deploying to AWS Electric Beanstalk</button>
