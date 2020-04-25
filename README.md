@@ -1,4 +1,13 @@
-## Terminology
+<div style="display: inline-block;">
+<a class="link" href="http://oclipa.github.io/">&lt; home</a>
+<a class="link" href="http://oclipa.github.io/toolbox.html">&lt; toolbox</a>
+</div> 
+
+## Docker
+
+<div>   
+<button type="button" class="collapsible">+ Terminology</button>
+<div class="content" style="display: none;" markdown="1">
 
 | Term | Description |
 | :------- | :------- |
@@ -11,10 +20,13 @@
 | Docker Hub | A central registry of images maintained by Docker: [https://hub.docker.com/](https://hub.docker.com/) <br/> Repositories can also be hosted locally. |
 | Flask | A micro web framework, written in Python.  Typically used for web applications. |
 | <img width="300"/> | <img width="400"/>  |
+</div>
+</div>
 
 <p style="page-break-before: always"/> 
-
-## CLI Commands
+<div>   
+<button type="button" class="collapsible">+ CLI Commands</button>
+<div class="content" style="display: none;" markdown="1">
 
 ### Management Commands (since v1.13+)
 
@@ -63,10 +75,13 @@
 | `$ docker rm [container-name]`| Delete a container |
 | `$ docker rm $(docker ps -a -q -f status=exited)`| Delete all stopped containers |
 | <img width="300"/> |  |
+</div>
+</div>
 
 <p style="page-break-before: always"/> 
-
-## DockerFile
+<div>   
+<button type="button" class="collapsible">+ DockerFile</button>
+<div class="content" style="display: none;" markdown="1">
 
 | Command | Action |
 | :------- | :------- |
@@ -87,8 +102,12 @@
 
 For further discussion of the difference between `RUN`, `CMD` and `ENTRYPOINT, see 
    * [https://aboullaite.me/dockerfile-run-vs-cmd-vs-entrypoint/](https://aboullaite.me/dockerfile-run-vs-cmd-vs-entrypoint/)
+</div>
+</div>
 
-## Example Script to Launch Multi-Container Environment
+<div>   
+<button type="button" class="collapsible">+ Example Script to Launch Multi-Container Environment</button>
+<div class="content" style="display: none;" markdown="1">
 
 ```bash
 #!/bin/bash
@@ -109,10 +128,12 @@ docker container run -d --net foodtrucks-net -p 5000:5000 \
    --name foodtrucks-web oclipa/foodtrucks-web
 ```
 Relates to the following git repo: [https://github.com/oclipa/food-trucks](https://github.com/oclipa/food-trucks)
-
+</div>
+</div>
 <p style="page-break-before: always"/> 
-
-## Docker-Compose
+<div>   
+<button type="button" class="collapsible">+ Docker-Compose</button>
+<div class="content" style="display: none;" markdown="1">
 
 A tool for managing a collection of containers as if they were a single app.  
 
@@ -161,10 +182,12 @@ If problems are experienced, might need to run `docker-compose up -d --build`.
 | `$ docker-compose down [-v]` | Shutdown all of the services. `-v` Destroy all data volumes. |
 | `$ docker-compose run [service-id] [command]` | Run a command in the context of the specified service. |
 | <img width="300"/> |  |
-
+</div>
+</div>
 <p style="page-break-before: always"/> 
-
-## Deploying to AWS Electric Beanstalk
+<div>   
+<button type="button" class="collapsible">+ Deploying to AWS Electric Beanstalk</button>
+<div class="content" style="display: none;" markdown="1">
 
 * [https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/single-container-docker-configuration.html](https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/single-container-docker-configuration.html)
 
@@ -186,16 +209,28 @@ If problems are experienced, might need to run `docker-compose up -d --build`.
   "Logging": "/var/log/nginx"
 }
 ```
+</div>
+</div>
 
-## Deploying to Google Compute Engine
+<div>   
+<button type="button" class="collapsible">+ Deploying to Google Compute Engine</button>
+<div class="content" style="display: none;" markdown="1">
 
 * [https://cloud.google.com/compute/docs/containers/deploying-containers](https://cloud.google.com/compute/docs/containers/deploying-containers)
+</div>
+</div>
 
-## Deploying to Azure App Service
+<div>   
+<button type="button" class="collapsible">+ Deploying to Azure App Service</button>
+<div class="content" style="display: none;" markdown="1">
 
 * [https://docs.microsoft.com/en-us/learn/modules/deploy-run-container-app-service/](https://docs.microsoft.com/en-us/learn/modules/deploy-run-container-app-service/)
+</div>
+</div>
 
-## Deploying to Digital Ocean
+<div>   
+<button type="button" class="collapsible">+ Deploying to Digital Ocean</button>
+<div class="content" style="display: none;" markdown="1">
 
 * [https://stackabuse.com/deploying-a-node-js-app-to-a-digitalocean-droplet-with-docker/](https://stackabuse.com/deploying-a-node-js-app-to-a-digitalocean-droplet-with-docker/)
 
@@ -208,10 +243,12 @@ Summarised:
 1. SSH to the Droplet: `$ ssh -i [path/to/private/key] root@ip-address]`
 1. Run the Docker image: `$ docker run -p [external-port]:[internal-port] [container-name]`
 1. Access the web page at: `http://[ip-address]:[external-port]/`
-
+</div>
+</div>
 <p style="page-break-before: always"/> 
-
-## Development Workflow
+<div>   
+<button type="button" class="collapsible">+ Development Workflow</button>
+<div class="content" style="display: none;" markdown="1">
 
 To develop and test an existing image, do the following:
 
@@ -219,8 +256,12 @@ To develop and test an existing image, do the following:
 2. In `docker-compose.yml`, for the service of interest, replace the `image [image name]` property with a `build .` property.
 3. Restart the services: `docker-compose down -v; docker-compose up -d --build`
 4. If you have problems, try deleting the existing image (`docker image rm [image-name]`) and restart the services again.
+</div>
+</div>
 
-## Commonly Used Images
+<div>   
+<button type="button" class="collapsible">+ Commonly Used Images</button>
+<div class="content" style="display: none;" markdown="1">
 
 * Ubuntu - simple but flexible base image (use apt-get to install dependencies)
    * Example: [https://github.com/prakhar1989/FoodTrucks](https://github.com/prakhar1989/FoodTrucks)
@@ -228,8 +269,12 @@ To develop and test an existing image, do the following:
    * Example: [https://github.com/prakhar1989/docker-curriculum/tree/master/flask-app](https://github.com/prakhar1989/docker-curriculum/tree/master/flask-app)
 * Busybox - lightweight command line tools
 * Elasticsearch - open source search and analytics engine
+</div>
+</div>
 
-## Additional References
+<div>   
+<button type="button" class="collapsible">+ Additional References</button>
+<div class="content" style="display: none;" markdown="1">
 
 * Official Docker Reference Documentation: [https://docs.docker.com/reference/](https://docs.docker.com/reference/)
 * Official DockerFile Documentation: [https://docs.docker.com/engine/reference/builder/](https://docs.docker.com/engine/reference/builder/)
@@ -237,4 +282,47 @@ To develop and test an existing image, do the following:
 * Official Docker Networks Documentation: [https://docs.docker.com/network/](https://docs.docker.com/network/)
 * Get Started with Docker: [https://www.docker.com/get-started](https://www.docker.com/get-started)
 * Docker for Beginners: [https://docker-curriculum.com/](https://docker-curriculum.com/)
+</div>
+</div>
+
+&nbsp;
+
+&nbsp;
+
+&nbsp;
+
+------
+**Move along; nothing to see here...**
+
+<script type="text/javascript">
+
+    function loadCSS(filename){ 
+
+       var file = document.createElement("link");
+       file.setAttribute("rel", "stylesheet");
+       file.setAttribute("type", "text/css");
+       file.setAttribute("href", filename);
+       document.head.appendChild(file);
+    }
+
+    //just call a function to load your CSS
+    //this path should be relative your HTML location
+    loadCSS("collapse.css");
+
+    var coll = document.getElementsByClassName("collapsible");
+    var i;
+
+    for (i = 0; i < coll.length; i++) {
+      coll[i].addEventListener("click", function() {
+        this.classList.toggle("active");
+        var content = this.nextElementSibling;
+        if (content.style.display === "block") {
+          content.style.display = "none";
+        } else {
+          content.style.display = "block";
+        }
+      });
+    }
+
+</script>
 
