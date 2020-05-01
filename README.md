@@ -93,7 +93,7 @@
 For further discussion of the difference between `RUN`, `CMD` and `ENTRYPOINT, see 
    * [https://aboullaite.me/dockerfile-run-vs-cmd-vs-entrypoint/](https://aboullaite.me/dockerfile-run-vs-cmd-vs-entrypoint/)
 
-<div>   
+<div id="multi">   
 <button type="button" class="collapsible">+ Example Script to Launch Multi-Container Environment</button>
 <div class="content" style="display: none;" markdown="1">
 
@@ -172,7 +172,8 @@ If problems are experienced, might need to run `docker-compose up -d --build`.
 | <img width="300"/> |  |
 
 <p style="page-break-before: always"/> 
-<div>   
+
+<div id="aws">   
 <button type="button" class="collapsible">+ Deploying to AWS Electric Beanstalk</button>
 <div class="content" style="display: none;" markdown="1">
 
@@ -199,7 +200,7 @@ If problems are experienced, might need to run `docker-compose up -d --build`.
 </div>
 </div>
 
-<div>   
+<div id="google">   
 <button type="button" class="collapsible">+ Deploying to Google Compute Engine</button>
 <div class="content" style="display: none;" markdown="1">
 
@@ -208,7 +209,7 @@ If problems are experienced, might need to run `docker-compose up -d --build`.
 </div>
 </div>
 
-<div>   
+<div id="azure">   
 <button type="button" class="collapsible">+ Deploying to Azure App Service</button>
 <div class="content" style="display: none;" markdown="1">
 
@@ -217,7 +218,7 @@ If problems are experienced, might need to run `docker-compose up -d --build`.
 </div>
 </div>
 
-<div>   
+<div id="ocean">   
 <button type="button" class="collapsible">+ Deploying to Digital Ocean</button>
 <div class="content" style="display: none;" markdown="1">
 
@@ -236,7 +237,8 @@ Summarised:
 </div>
 </div>
 <p style="page-break-before: always"/> 
-<div>   
+
+<div id="dev">   
 <button type="button" class="collapsible">+ Development Workflow</button>
 <div class="content" style="display: none;" markdown="1">
 
@@ -250,7 +252,7 @@ To develop and test an existing image, do the following:
 </div>
 </div>
 
-<div>   
+<div id="images">   
 <button type="button" class="collapsible">+ Commonly Used Images</button>
 <div class="content" style="display: none;" markdown="1">
 
@@ -264,7 +266,7 @@ To develop and test an existing image, do the following:
 </div>
 </div>
 
-<div>   
+<div id="refs">   
 <button type="button" class="collapsible">+ Additional References</button>
 <div class="content" style="display: none;" markdown="1">
 
@@ -289,33 +291,27 @@ To develop and test an existing image, do the following:
 
 <script type="text/javascript">
 
-    function loadCSS(filename){ 
+    const loadCSS = (filename) => { 
 
-       var file = document.createElement("link");
+       const file = document.createElement("link");
        file.setAttribute("rel", "stylesheet");
        file.setAttribute("type", "text/css");
        file.setAttribute("href", filename);
        document.head.appendChild(file);
-    }
+    };
 
+    const loadJS = (filename) => { 
+
+       const file = document.createElement("script");
+       file.setAttribute("type", "text/javascript");
+       file.setAttribute("src", filename);
+       document.head.appendChild(file);
+    };
+   
     //just call a function to load your CSS
     //this path should be relative your HTML location
     loadCSS("../collapse.css");
-
-    var coll = document.getElementsByClassName("collapsible");
-    var i;
-
-    for (i = 0; i < coll.length; i++) {
-      coll[i].addEventListener("click", function() {
-        this.classList.toggle("active");
-        var content = this.nextElementSibling;
-        if (content.style.display === "block") {
-          content.style.display = "none";
-        } else {
-          content.style.display = "block";
-        }
-      });
-    }
+    loadJS("../collapse.js");
 
 </script>
 
