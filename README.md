@@ -90,11 +90,11 @@
 | `LABEL <key>=<value> <key>=<value> <key>=<value> ...` | Set metadata as key-value pairs. |
 | <img width="300"/> | <img width="400"/>  |
 
-For further discussion of the difference between `RUN`, `CMD` and `ENTRYPOINT, see 
+For further discussion of the difference between `RUN`, `CMD` and `ENTRYPOINT`, see 
    * [https://aboullaite.me/dockerfile-run-vs-cmd-vs-entrypoint/](https://aboullaite.me/dockerfile-run-vs-cmd-vs-entrypoint/)
 
 <div id="multi">   
-<button type="button" class="collapsible">+ Example Script to Launch Multi-Container Environment</button>
+<button type="button" class="collapsible">+ Launching A Multi-Container Environment</button>
 <div class="content" style="display: none;" markdown="1">
 
 ```bash
