@@ -315,3 +315,19 @@ To develop and test an existing image, do the following:
 
 </script>
 
+<!-- Default Statcounter code for git-cheat-sheet
+https://oclipa.github.io/git-cheat-sheet/ -->
+<script type="text/javascript">
+var sc_project=12427713; 
+var sc_invisible=1; 
+var sc_security="e81d8d4e"; 
+</script>
+<script type="text/javascript"
+src="https://www.statcounter.com/counter/counter.js"
+async></script>
+<noscript><div class="statcounter"><a title="Web Analytics"
+href="https://statcounter.com/" target="_blank"><img
+class="statcounter"
+src="https://c.statcounter.com/12427713/0/e81d8d4e/1/"
+alt="Web Analytics"></a></div></noscript>
+<!-- End of Statcounter Code -->
