@@ -315,19 +315,20 @@ To develop and test an existing image, do the following:
 
 </script>
 
-<!-- Default Statcounter code for git-cheat-sheet
-https://oclipa.github.io/git-cheat-sheet/ -->
+<!-- Default Statcounter code for docker-cheat-sheet
+https://oclipa.github.io/docker-cheat-sheet/ -->
 <script type="text/javascript">
-var sc_project=12427713; 
+var sc_project=12427716; 
 var sc_invisible=1; 
-var sc_security="e81d8d4e"; 
+var sc_security="0dd6d290"; 
 </script>
 <script type="text/javascript"
 src="https://www.statcounter.com/counter/counter.js"
 async></script>
-<noscript><div class="statcounter"><a title="Web Analytics"
-href="https://statcounter.com/" target="_blank"><img
-class="statcounter"
-src="https://c.statcounter.com/12427713/0/e81d8d4e/1/"
-alt="Web Analytics"></a></div></noscript>
+<noscript><div class="statcounter"><a title="Web Analytics
+Made Easy - StatCounter" href="https://statcounter.com/"
+target="_blank"><img class="statcounter"
+src="https://c.statcounter.com/12427716/0/0dd6d290/1/"
+alt="Web Analytics Made Easy -
+StatCounter"></a></div></noscript>
 <!-- End of Statcounter Code -->
